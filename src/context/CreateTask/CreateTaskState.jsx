@@ -28,7 +28,7 @@ const CreateTaskState = (props) => {
   const fetchData = async () => {
     try {
       const response = await GetAllTask();
-    
+      
       if(response){
         setbacklogtask(response.response.filter((data) => {
           return data.taskType === "backlog";
