@@ -49,7 +49,7 @@ export const EditTask=async(title,priority,checkList,dueDate,taskType,id)=>{
     axios.defaults.headers.common["Authorization"] = AUTH_TOKEN;
     const reqPayLoad = { title,priority,checkList,dueDate,taskType,id};
     const response = await axios.put(reqUrl, reqPayLoad);
-    toast.success(response.message);
+    toast.success(response.data.message);
     return response.data;
    
   } catch (error) {

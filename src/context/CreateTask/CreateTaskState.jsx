@@ -28,7 +28,7 @@ const CreateTaskState = (props) => {
   const fetchData = async () => {
     try {
       const response = await GetAllTask();
-      console.log(response)
+    
       if(response){
         setbacklogtask(response.response.filter((data) => {
           return data.taskType === "backlog";
@@ -49,7 +49,11 @@ const CreateTaskState = (props) => {
   };
 
   useEffect(()=>{
-    fetchData();
+
+    if(localStorage.getItem("token")){
+      fetchData();
+    }
+    
   },[newtask])
   
 
@@ -193,7 +197,11 @@ const CreateTaskState = (props) => {
         todo,
         progress,
         done,
-        setnewTask
+        setnewTask,
+        setbacklogtask,
+        setTodo,
+        setprogress,
+        setdone,
       }}>
       {props.children}
     </CreateTaskContext.Provider>

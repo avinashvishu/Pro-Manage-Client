@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{ useState} from 'react'
 import DashnavigateContext from './DashnavigateContext'
 import { useNavigate } from 'react-router-dom';
 
@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 const DashnavigateState = (props) => {
     const [isSelected,setIsSelected]=useState("Board");
     const [OpenClosePopUp,setOpenClosePopUp]=useState(false)
+
     const nav = useNavigate();
     const Select=(select)=>{
         setIsSelected(select)
@@ -15,6 +16,8 @@ const DashnavigateState = (props) => {
     }
     const Logout =()=>{
       localStorage.removeItem('token');
+      localStorage.removeItem('analytics');
+       
       setOpenClosePopUp(!OpenClosePopUp)
       nav('/login')
     }
