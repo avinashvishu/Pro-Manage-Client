@@ -14,7 +14,7 @@ const DeleteTaskState = (props) => {
       try {
         const response = await DeleteTask(id);
         if(response){
-          setnewTask(newtask+1)
+          await setnewTask(newtask+1)
           setdeletePopUP(!deletePopUP);
         }
       } catch (error) {
