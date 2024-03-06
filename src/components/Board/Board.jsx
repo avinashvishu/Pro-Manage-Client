@@ -5,12 +5,6 @@ import CreateTaskContext from "../../context/CreateTask/CreateTaskContext";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { VscCollapseAll } from "react-icons/vsc";
 import { IoAddOutline } from "react-icons/io5";
-import { BiSolidCircle } from "react-icons/bi";
-import { BsThreeDots } from "react-icons/bs";
-import { CiSquareChevDown } from "react-icons/ci";
-import { CiSquareChevUp } from "react-icons/ci";
-import { MdCheckBoxOutlineBlank } from "react-icons/md";
-import { MdCheckBox } from "react-icons/md";
 import TaskKarts from "../taskKarts/TaskKarts";
 
 
@@ -22,7 +16,6 @@ const board = () => {
     popUp,
     userName,
     setUserName,
-    
   } = useContext(BoardFilterContext);
   const { handleAddCreateToggle,backlogtask,todo,progress,done,} = useContext(CreateTaskContext);
   const [backlogcollapseall, setbacklogcollapseall] = useState(false);
@@ -93,8 +86,6 @@ const board = () => {
 
   useEffect(() => {
     setUserName(localStorage.getItem("name"));
-  
-    
   },[]);
 
   useEffect(() => {
@@ -108,6 +99,8 @@ const board = () => {
       removeEventListener("mousedown", ClosePopup);
     };
   });
+
+
 
   return (
     <div className={`${style.BoardContainer} dashBoardGloble`}>

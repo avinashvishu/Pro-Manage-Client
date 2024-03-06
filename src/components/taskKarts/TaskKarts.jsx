@@ -9,6 +9,9 @@ import { MdCheckBox } from "react-icons/md";
 import { useState } from 'react';
 import EditTaskContext from '../../context/EditTask/EditTaskContext';
 
+import DeleteTaskContext from '../../context/DeleteTask/DeleteTaskContext';
+
+
 
 
 const TaskKarts = ({ priorityColor,data,i,collaspseAll}) => {
@@ -16,7 +19,8 @@ const TaskKarts = ({ priorityColor,data,i,collaspseAll}) => {
   const [expand, setExpand] = useState(false);
   const [showdropdown, setshowdropdown] = useState(false);
   const {handleEditToggle,changeType}=useContext(EditTaskContext)
-
+  
+  const {setdeletePopUP,setId}=useContext(DeleteTaskContext)
 
 
   const popUp=()=>{
@@ -54,7 +58,8 @@ const TaskKarts = ({ priorityColor,data,i,collaspseAll}) => {
     const parts = dateString.split('-');
     const month = months[parseInt(parts[1], 10) - 1];
     const day = parseInt(parts[1], 10);
-  
+    
+
     // Adding suffix to day (e.g., '1st', '2nd', '3rd', '4th', etc.)
     let suffix;
     if (day === 1 || day === 21 || day === 31) {
@@ -138,7 +143,9 @@ const TaskKarts = ({ priorityColor,data,i,collaspseAll}) => {
                               </div>
                               <div
                                 className={style.EditShareDelPopUpItems}
-                                onClick={() => selectEditShareDel("Delete")}>
+                                onClick={() => {
+                                  setId(data._id)
+                                  setdeletePopUP(true)}}>
                                 <span style={{color:"#CF3636"}} >Delete</span>
                               </div>
                       </div>:null}
@@ -197,7 +204,7 @@ const TaskKarts = ({ priorityColor,data,i,collaspseAll}) => {
                   </div>:null}
                     <div className={style.taskKartBottom}>
                       <div className={style.dueDatebtn} >
-                        {data.dueDate?<span style={{backgroundColor:data.color,color:data.color==="#CF3636"?"#FFFFFF":"#5A5A5A"}} className={style.taskbtn}>{formatDate(data.dueDate)}</span>:null}
+                        {data.dueDate?<span style={{backgroundColor:data.taskType==="done"?"#63C05B":data.color,color:data.color==="#CF3636"?"#FFFFFF":"#5A5A5A"}} className={style.taskbtn}>{formatDate(data.dueDate)}</span>:null}
                       </div>
                  
                         <TypeChip/>

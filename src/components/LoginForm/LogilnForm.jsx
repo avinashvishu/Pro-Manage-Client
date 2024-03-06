@@ -11,10 +11,13 @@ import RegisterLoginButton from "../RegisterLoginButton/RegisterLoginButton";
 import { loginUser } from "../../apis/UserApi";
 import { useContext } from "react";
 import DashnavigateContext from "../../context/NavigateDashboard/DashnavigateContext";
+import CreateTaskContext from "../../context/CreateTask/CreateTaskContext";
 
 const LogilnForm = () => {
   const [showHidePassword, setshowHidePassword] = useState(true);
   const{Select}=useContext(DashnavigateContext)
+  const{fetchData}= useContext(CreateTaskContext)
+    
   const nav = useNavigate();
 
 
@@ -25,8 +28,9 @@ const LogilnForm = () => {
     if(response){
       localStorage.setItem("token",response.token)
       localStorage.setItem("name",response.name) 
-      Select("Board")
-      nav('/')
+      Select("Board");
+      fetchData();
+      nav('/');
     }
    
   };

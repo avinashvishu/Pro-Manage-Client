@@ -16,7 +16,7 @@ const EditTaskState = (props) => {
   const [disbaleButton, setDisableButton] = useState(true);
   const [taskType, setTaskType] = useState("");
   const [id,setId]=useState();
-    const{setnewTask,newtask}=useContext(CreateTaskContext)
+  const{setnewTask,newtask}=useContext(CreateTaskContext)
 
 
     useEffect(() => {

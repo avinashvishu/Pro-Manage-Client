@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import CreateTaskContext from "./CreateTaskContext";
 import { GoDotFill } from "react-icons/go";
 import { CreateTask } from "../../apis/TaskApi";
 import { GetAllTask } from "../../apis/TaskApi";
+import DashnavigateContext from "../NavigateDashboard/DashnavigateContext";
 
 const CreateTaskState = (props) => {
   const [toggleCreateTask, setToggleCreateTask] = useState(false);
@@ -14,10 +15,8 @@ const CreateTaskState = (props) => {
   const [disbaleButton, setDisableButton] = useState(true);
   const [taskType] = useState("todo");
   const [newtask, setnewTask] = useState(0);
-  const [backlogtask, setbacklogtask] = useState([]);
-  const [todo, setTodo] = useState([]);
-  const [progress, setprogress] = useState([]);
-  const [done, setdone] = useState([]);
+  
+  const {backlogtask, setbacklogtask,todo, setTodo,progress, setprogress,done, setdone}= useContext(DashnavigateContext)
 
   useEffect(() => {
     validateButton();
@@ -202,6 +201,7 @@ const CreateTaskState = (props) => {
         setTodo,
         setprogress,
         setdone,
+        fetchData,
       }}>
       {props.children}
     </CreateTaskContext.Provider>

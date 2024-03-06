@@ -3,8 +3,9 @@ import BoardFilterContext from "./BoardFilterContext"
 
 const BoardFilterState = (props) => {
     const[FilterSelected,setFilterSelected]=useState('This week');
-    const [filterPopUp,setfilterPopUp]=useState(false)
-    const[userName,setUserName]=useState("")
+    const [filterPopUp,setfilterPopUp]=useState(false);
+    const[userName,setUserName]=useState("");
+    
     const selectFilter=(filter)=>{
         setFilterSelected(filter);
         setfilterPopUp(!filterPopUp)

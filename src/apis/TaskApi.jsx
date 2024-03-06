@@ -71,3 +71,16 @@ export const ChangeTaskType=async(taskType,id)=>{
     console.log(error)
   }
 }
+
+export const DeleteTask=async(id)=>{
+  try {
+    const reqUrl = `${backendUrl}/deleteTask/${id}`;
+    let AUTH_TOKEN = localStorage.getItem("token");
+    axios.defaults.headers.common["Authorization"] = AUTH_TOKEN;
+    const response = await axios.delete(reqUrl);
+    toast.success(response.data.message);
+    return response.data;
+  } catch (error) {
+    toast.error(error.response.data.message);
+  }
+}
