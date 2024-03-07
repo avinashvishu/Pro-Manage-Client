@@ -3,6 +3,7 @@ import RegisterPage from "./Page/RegisterPage/RegisterPage";
 import LoginPage from "./Page/LoginPage/LoginPage";
 import "./App.css";
 import DashBoard from "./Page/DashBoard/DashBoard";
+import ShareTaskPage from "./Page/ShareTaskPage/ShareTaskPage";
 import DashnavigateState from "./context/NavigateDashboard/DashnavigateState";
 import BoardFilterState from "./context/BoardFilter/BoardFilterState";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
@@ -20,6 +21,7 @@ function App() {
               <DeleteTaskState>
                 <Routes>
                   <Route path="/" element={<ProtectedRoute Components={DashBoard} />} />
+                  <Route path="/share/task/:id" Component={ShareTaskPage} />
                   <Route path="/register" element={<RegisterPage />} />
                   <Route path="/login" element={<LoginPage />} />
                 </Routes>

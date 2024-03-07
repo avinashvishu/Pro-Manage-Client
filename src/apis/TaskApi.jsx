@@ -83,3 +83,17 @@ export const DeleteTask=async(id)=>{
     toast.error(error.response.data.message);
   }
 }
+
+export const GetSharedTask=async(id)=>{
+  try {
+
+    const reqUrl = `${backendUrl}/sharedTask/${id}`;
+    let AUTH_TOKEN = localStorage.getItem("token");
+    axios.defaults.headers.common["Authorization"] = AUTH_TOKEN;
+    const response = await axios.get(reqUrl);
+
+    return response.data;
+  } catch (error) {
+    toast.error(error.response.data.message);
+  }
+}

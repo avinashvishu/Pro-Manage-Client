@@ -8,8 +8,10 @@ import { MdCheckBoxOutlineBlank } from "react-icons/md";
 import { MdCheckBox } from "react-icons/md";
 import { useState } from 'react';
 import EditTaskContext from '../../context/EditTask/EditTaskContext';
-
 import DeleteTaskContext from '../../context/DeleteTask/DeleteTaskContext';
+import CopyToClipboard from 'react-copy-to-clipboard';
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 
@@ -22,7 +24,7 @@ const TaskKarts = ({ priorityColor,data,i,collaspseAll}) => {
   
   const {setdeletePopUP,setId}=useContext(DeleteTaskContext)
 
-
+  
   const popUp=()=>{
     setshowdropdown(!showdropdown)
       }
@@ -113,7 +115,9 @@ const TaskKarts = ({ priorityColor,data,i,collaspseAll}) => {
    }
 
  }
-
+ const onCopyText=()=>{
+   toast.success("Share link copied successfully")
+ }
 
 
   return (
@@ -138,8 +142,10 @@ const TaskKarts = ({ priorityColor,data,i,collaspseAll}) => {
                               </div>
                               <div
                                 className={style.EditShareDelPopUpItems}
-                                onClick={() => selectEditShareDel("Share")}>
+                               >
+                                  <CopyToClipboard text={`${window.location.href}share/task/${data._id}`} onCopy={onCopyText}>
                                 <span>Share</span>
+                                </CopyToClipboard>
                               </div>
                               <div
                                 className={style.EditShareDelPopUpItems}
