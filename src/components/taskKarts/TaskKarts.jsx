@@ -117,6 +117,7 @@ const TaskKarts = ({ priorityColor,data,i,collaspseAll}) => {
  }
  const onCopyText=()=>{
    toast.success("Share link copied successfully")
+   setshowdropdown(false)
  }
 
 
