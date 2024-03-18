@@ -18,12 +18,14 @@ export const CreateTask = async (title,priority,checkList,dueDate,taskType,color
   }
 };
 
-export const GetAllTask=async()=>{
+export const GetAllTask=async(duration)=>{
   try {
+   
     const reqUrl = `${backendUrl}/GetAllTask`;
     let AUTH_TOKEN = localStorage.getItem("token");
     axios.defaults.headers.common["Authorization"] = AUTH_TOKEN;
-    const response = await axios.get(reqUrl);
+
+    const response = await axios.post(reqUrl, {duration:duration});
     return response.data;
   } catch (error) {
     toast.error(error.response.data.message);

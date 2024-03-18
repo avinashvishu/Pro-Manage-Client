@@ -119,19 +119,19 @@ const board = () => {
             <div className={style.FilterPopUp} ref={popUpRef}>
               <div
                 className={style.FilterPopUpItems}
-                // onClick={() => selectFilter("Today")}
+                onClick={() => selectFilter("Today")}
                 >
                 <span>Today</span>
               </div>
               <div
                 className={style.FilterPopUpItems}
-                // onClick={() => selectFilter("This Week")}
+                onClick={() => selectFilter("This week")}
                >
                 <span>This Week</span>
               </div>
               <div
                 className={style.FilterPopUpItems}
-                // onClick={() => selectFilter("This Month")}
+                onClick={() => selectFilter("This Month")}
                 >
                 <span>This Month</span>
               </div>

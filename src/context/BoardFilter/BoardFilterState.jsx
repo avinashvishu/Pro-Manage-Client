@@ -19,7 +19,7 @@ const BoardFilterState = (props) => {
       setfilterPopUp(!filterPopUp)
     }
   return (
-    <BoardFilterContext.Provider value={{FilterSelected,selectFilter,filterPopUp,popUp,userName,HandleChangeUserName,setUserName}}>
+    <BoardFilterContext.Provider value={{FilterSelected,setFilterSelected,selectFilter,filterPopUp,popUp,userName,HandleChangeUserName,setUserName}}>
         {props.children}
     </BoardFilterContext.Provider>
   )

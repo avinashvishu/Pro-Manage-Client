@@ -4,6 +4,7 @@ import { GoDotFill } from "react-icons/go";
 import { CreateTask } from "../../apis/TaskApi";
 import { GetAllTask } from "../../apis/TaskApi";
 import DashnavigateContext from "../NavigateDashboard/DashnavigateContext";
+import BoardFilterContext from "../BoardFilter/BoardFilterContext";
 
 const CreateTaskState = (props) => {
   const [toggleCreateTask, setToggleCreateTask] = useState(false);
@@ -17,6 +18,7 @@ const CreateTaskState = (props) => {
   const [newtask, setnewTask] = useState(0);
   
   const {backlogtask, setbacklogtask,todo, setTodo,progress, setprogress,done, setdone}= useContext(DashnavigateContext)
+  const {FilterSelected}=useContext(BoardFilterContext)
 
   useEffect(() => {
     validateButton();
@@ -26,7 +28,7 @@ const CreateTaskState = (props) => {
 
   const fetchData = async () => {
     try {
-      const response = await GetAllTask();
+      const response = await GetAllTask(FilterSelected);
       
       if(response){
         setbacklogtask(response.response.filter((data) => {
@@ -53,7 +55,7 @@ const CreateTaskState = (props) => {
       fetchData();
     }
     
-  },[newtask])
+  },[newtask,FilterSelected])
   
 
   const validateButton = () => {
